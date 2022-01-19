@@ -4,6 +4,7 @@ import millify from "millify"
 import {useGetCryptosQuery} from '../services/api'
 import Currencies from "./Currencies"
 import News from "./New"
+import LoadingSpinner from "./LoadingSpinner"
 
 const {Title} = Typography
 
@@ -11,7 +12,7 @@ const Home = ()=>{
     const {data,isFetching} = useGetCryptosQuery(10)
     const stats = data?.data?.stats
     if(isFetching){
-        return "Loading..."
+        return <LoadingSpinner/>
     }
 
   

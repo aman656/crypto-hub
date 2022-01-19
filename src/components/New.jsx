@@ -2,6 +2,7 @@ import { useGetCryptoNewsQuery } from "../services/newsapi"
 import {useGetCryptosQuery} from '../services/api'
 import { Select,Typography,Col,Row,Avatar,Card } from "antd"
 import moment from "moment"
+import LoadingSpinner  from "./LoadingSpinner"
 import { useState } from "react"
 
 
@@ -14,7 +15,7 @@ const News = ({less})=>{
 
     const {data} = useGetCryptosQuery(100)
 if(!newsList?.value){
-    return "Loading..."
+    return <LoadingSpinner/>
 }
     return(
         <Row gutter={[24,24]}>
@@ -36,7 +37,7 @@ if(!newsList?.value){
                                     <a href={n.url} target="_blank" rel="nonreferrer">
                                         <div className="news-image-container">
                                             <Title className="news-title" level={4}>{n.name}</Title>
-                                            <img src={n?.image?.thumbnail?.contentUrl} style={{maxWidth:"200px" ,maxHeight:"100px"}} />
+                                            <img src={n?.image?.thumbnail?.contentUrl} alt="news logo" style={{maxWidth:"200px" ,maxHeight:"100px"}} />
                                         </div>
                                         <p>
                                             {
